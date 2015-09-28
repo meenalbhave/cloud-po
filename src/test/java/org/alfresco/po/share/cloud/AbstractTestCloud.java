@@ -19,12 +19,14 @@
 package org.alfresco.po.share.cloud;
 
 import org.alfresco.po.AbstractTest;
+import org.alfresco.po.share.FactoryPage;
 import org.alfresco.po.share.SharePage;
 import org.alfresco.po.share.cloud.steps.CloudActions;
 import org.alfresco.po.share.cmm.steps.CmmActions;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.WebDriver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.AfterClass;
@@ -45,6 +47,7 @@ public abstract class AbstractTestCloud extends  AbstractTest
     private static final Log logger = LogFactory.getLog(AbstractTestCloud.class);
     
     protected CloudActions cloudActions = new CloudActions();
+    @Autowired protected FactoryPage factoryPage;
 
     @BeforeClass(alwaysRun = true)
     @Parameters({ "contextFileName" })

@@ -53,7 +53,7 @@ public class LoginPageTest extends AbstractTestCloud
     @Test(groups = { "Enterprise-only" }, priority = 1)
     public void navigateToAdminTools() throws Exception
     {
-        page = loginAs(username, password);
+        page = cloudActions.loginAs(driver, shareUrl, username, password).render();
 
         MyFilesPage myFilesPage = page.getNav().selectMyFilesPage().render();
 

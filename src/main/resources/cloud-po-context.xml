@@ -11,10 +11,12 @@
         http://www.springframework.org/schema/util/spring-util.xsd">
 	
     <context:annotation-config/>
+    <context:component-scan base-package="org.alfresco.po"/>
+    <context:spring-configured/>
     
-    <import resource="classpath:share-po-context.xml"/>
+
      
-    <bean id="testPOProperties" class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer" >
+    <bean id="CloudPOProperties" class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer" >
        <property name="locations">
           <list>
              <value>classpath*:test.properties</value>
@@ -27,4 +29,5 @@
     
      <bean id="factoryPage"  class="org.alfresco.po.share.cloud.FactoryShareCloudPage" />
 
+    <import resource="classpath:share-po-context.xml"/>
 </beans>

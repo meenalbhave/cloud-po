@@ -25,16 +25,35 @@ package org.alfresco.po.share.cloud.steps;
  *  @author mbhave
  */
 
-import org.alfresco.po.share.steps.CommonActions;
+import org.alfresco.po.HtmlPage;
+import org.alfresco.po.share.FactoryPage;
+import org.alfresco.po.share.LoginPage;
+import org.alfresco.po.share.util.PageUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.openqa.selenium.WebDriver;
+import org.springframework.beans.factory.annotation.Autowired;
 
-public class CloudActions extends CommonActions
+public class CloudActions
 {
     private static final Log LOGGER = LogFactory.getLog(CloudActions.class);
     
-	private String editAction = "Edit";
-
-    private String findInstanceAction = "Find Where Used";
+    @Autowired protected FactoryPage factoryPage;
+    
+    public HtmlPage loginAs(final WebDriver driver, final String url, final String... userInfo) throws Exception
+    {
+        PageUtils.checkMandotaryParam("webdriver", driver);
+        
+        if(null == url||!url.startsWith("https://"))
+        {
+            throw new IllegalArgumentException("A valid shareUrl is required and can not be: " + url);
+        }
+        
+        driver.navigate().to(url);
+        LoginPage loginPage =  factoryPage.getPage(driver).render();
+        return loginPage.loginAs(userInfo[0], userInfo[1]);
+    }
+    
+    
 
 }
