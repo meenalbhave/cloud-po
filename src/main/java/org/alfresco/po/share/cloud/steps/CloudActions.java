@@ -29,15 +29,17 @@ import org.alfresco.po.HtmlPage;
 import org.alfresco.po.share.FactoryPage;
 import org.alfresco.po.share.LoginPage;
 import org.alfresco.po.share.util.PageUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Component;
+@Component
+/**
+ * Meenal please add documentation here.
+ * 
+ *
+ */
 public class CloudActions
 {
-    private static final Log LOGGER = LogFactory.getLog(CloudActions.class);
-    
     @Autowired protected FactoryPage factoryPage;
     
     public HtmlPage loginAs(final WebDriver driver, final String url, final String... userInfo) throws Exception

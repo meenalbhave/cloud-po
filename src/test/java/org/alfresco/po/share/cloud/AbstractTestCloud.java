@@ -46,7 +46,7 @@ public abstract class AbstractTestCloud extends  AbstractTest
 {
     private static final Log logger = LogFactory.getLog(AbstractTestCloud.class);
     
-    protected CloudActions cloudActions = new CloudActions();
+    @Autowired protected CloudActions cloudActions;
     @Autowired protected FactoryPage factoryPage;
 
     @BeforeClass(alwaysRun = true)
